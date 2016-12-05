@@ -5,6 +5,10 @@
 angular.module('app').
  controller('registrarCtrl',['$scope','$http','$location','registrarService', function($scope,$http,$location,registrarService){
 	 
+	 $scope.nome = "";
+	 $scope.sobrenome = "";
+	 $scope.email = "";
+	 
 	 $scope.estadoCivil = [
       {
 	    "label" : "Solteiro(a)",
@@ -23,11 +27,6 @@ angular.module('app').
 	 $scope.sexo = {
 	   opt : "M"
 	 }
-	 
-//	 $scope.checkEstadoCivil = function(){
-//		 //$event.preventDefault();
-//		 $scope.estadoCivil = true;
-//	 }
 	 
 	 	 
 	 var dataObj = {

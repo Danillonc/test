@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class FivewareController {
 
-	public static final String WELCOME = "home/index";
+	public static final String WELCOME = "index";
 	
 	/**
 	 * Método respsonsável por renderizar a tela inicial da aplicação.

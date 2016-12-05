@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fiveware</title>
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
+		    
+</head>
+<body ng-app="app">
+  <div class="container">
+    <div class="header clearfix">
+        <nav>
+           <ul class="nav nav-pills pull-right">
+               <li role="presentation" class="active"><a href="/">Home</a></li>
+               <li role="presentation"><a href="http://www.fiveware.com.br/" target="_blank">Quem somos</a></li>
+           </ul>
+        </nav>
+        <h3 class="text-muted">Fiveware Test</h3>
+    </div>
+    <div class="jumbotron">
+       <h1>Jumbotron heading</h1>
+       <p class="lead">Teste</p>
+       <p>
+         <button type="submit" class="btn btn-lg btn-success" ng-click="registrar()">Registre-se</button>
+       </p>
+    </div>
+    <footer class="footer">
+        <p>2016 Company, Inc.</p>
+    </footer>
+    <div ng-view =""></div>
+   </div>  
+</body>
+    <script type="application/javascript" src="./js/angular.min.js"></script> 
+    <script type="application/javascript" src="./js/Chart.min.js"></script>
+    <script type="application/javascript" src="./js/angular-chart.min.js"></script>  
+    <script type="application/javascript" src="./js/angular.route.min.js"></script> 
+    <script type="application/javascript" src="./js/app.js"></script> 
+    <script type="application/javascript" src="./js/route.js"></script>
+    <script type="application/javascript" src="./js/filters.js"></script>
+    <script type="application/javascript" src="./js/desafio.controller.js"></script>
+    <script type="application/javascript" src="./js/votacao.controller.js"></script> 
+</html>
