@@ -5,9 +5,18 @@
 angular.module('app').
  controller('registrarCtrl',['$scope','$http','$location','registrarService', function($scope,$http,$location,registrarService){
 	 
-	 $scope.nome = "";
-	 $scope.sobrenome = "";
-	 $scope.email = "";
+	 $scope.nome = {
+			 data : ""
+	 }
+	 $scope.sobrenome = {
+			 data: ""
+	 }
+	 $scope.email = {
+	         data: ""
+	 }
+	 $scope.senha = {
+			 data: ""
+	 }
 	 
 	 $scope.estadoCivil = [
       {
@@ -28,28 +37,172 @@ angular.module('app').
 	   opt : "M"
 	 }
 	 
+	 $scope.civil = "S";
+	 
+	 $scope.estados = {
+			 model: null,
+			 disponiveis : 	[{
+					"ID": "1",
+					"Sigla": "AC",
+					"Nome": "Acre"
+				},
+				     {
+					"ID": "2",
+					"Sigla": "AL",
+					"Nome": "Alagoas"
+				},
+				     {
+					"ID": "3",
+					"Sigla": "AM",
+					"Nome": "Amazonas"
+				},
+				     {
+					"ID": "4",
+					"Sigla": "AP",
+					"Nome": "Amapá"
+				},
+				     {
+					"ID": "5",
+					"Sigla": "BA",
+					"Nome": "Bahia"
+				},
+				     {
+					"ID": "6",
+					"Sigla": "CE",
+					"Nome": "Ceará"
+				},
+				     {
+					"ID": "7",
+					"Sigla": "DF",
+					"Nome": "Distrito Federal"
+				},
+				     {
+					"ID": "8",
+					"Sigla": "ES",
+					"Nome": "Espírito Santo"
+				},
+				     {
+					"ID": "9",
+					"Sigla": "GO",
+					"Nome": "Goiás"
+				},
+				     {
+					"ID": "10",
+					"Sigla": "MA",
+					"Nome": "Maranhão"
+				},
+				     {
+					"ID": "11",
+					"Sigla": "MG",
+					"Nome": "Minas Gerais"
+				},
+				     {
+					"ID": "12",
+					"Sigla": "MS",
+					"Nome": "Mato Grosso do Sul"
+				},
+				     {
+					"ID": "13",
+					"Sigla": "MT",
+					"Nome": "Mato Grosso"
+				},
+				     {
+					"ID": "14",
+					"Sigla": "PA",
+					"Nome": "Pará"
+				},
+				     {
+					"ID": "15",
+					"Sigla": "PB",
+					"Nome": "Paraíba"
+				},
+				     {
+					"ID": "16",
+					"Sigla": "PE",
+					"Nome": "Pernambuco"
+				},
+				     {
+					"ID": "17",
+					"Sigla": "PI",
+					"Nome": "Piauí"
+				},
+				     {
+					"ID": "18",
+					"Sigla": "PR",
+					"Nome": "Paraná"
+				},
+				     {
+					"ID": "19",
+					"Sigla": "RJ",
+					"Nome": "Rio de Janeiro"
+				},
+				     {
+					"ID": "20",
+					"Sigla": "RN",
+					"Nome": "Rio Grande do Norte"
+				},
+				     {
+					"ID": "21",
+					"Sigla": "RO",
+					"Nome": "Rondônia"
+				},
+				     {
+					"ID": "22",
+					"Sigla": "RR",
+					"Nome": "Roraima"
+				},
+				     {
+					"ID": "23",
+					"Sigla": "RS",
+					"Nome": "Rio Grande do Sul"
+				},
+				     {
+					"ID": "24",
+					"Sigla": "SC",
+					"Nome": "Santa Catarina"
+				},
+				     {
+					"ID": "25",
+					"Sigla": "SE",
+					"Nome": "Sergipe"
+				},
+				     {
+					"ID": "26",
+					"Sigla": "SP",
+					"Nome": "São Paulo"
+				},
+				     {
+					"ID": "27",
+					"Sigla": "TO",
+					"Nome": "Tocantins"
+				}]
+
+	 }
 	 	 
 	 var dataObj = {
 				nome : $scope.nome,
-				sobreNome: $scope.sobreNome,
+				sobreNome: $scope.sobrenome,
+				email: $scope.email,
+				senha: $scope.senha,
 	            estadoCivil: $scope.estadoCivil,
-	            sexo: $scope.sexo
+	            sexo: $scope.sexo,
+	            estado: $scope.estados
 		};
 	 
 	 //chamar o servico que enviara a votacao e retornar o status de ok caso
 	 // seja bem sucedido a persistencia no banco. 
 	 //após isso mudar o location e mostrar a tela com o percentual.
-	 $scope.votarParticipante = function(){
+	 $scope.registrarUsuario = function(){
 		  // $event.preventDefault();
 		   
 		   //chamar servico para persistir o voto para respectivo participante.
 		 registrarService.addUser(dataObj).
 		     then(function(response){
-		    	 console.log('Sucesso ao votar - controller votacao.');
-		    	 $location.path('/votoFinalizado');		    	 
+		    	 console.log('Sucesso ao registrar - controller votacao.');
+		    	 $location.path('/registroFinalizado');		    	 
 		     },
 		     function(data){
-		    	console.log('Erro ao votar - controller votacao.'); 
+		    	console.log('Erro ao registrar - controller votacao.'); 
 		     });
 		   
 	 }		
@@ -67,7 +220,7 @@ angular.module('app').service('registrarService',['$http',function($http){
 	function addUser(obj){
 		
 		var request = $http({
-			method: 'POST',
+			method: 'PUT',
 			url: '/registrarUsuario/'+obj			
 		})
 		.success(function(response){

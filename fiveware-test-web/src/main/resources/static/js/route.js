@@ -1,11 +1,11 @@
 angular.module('app').config(function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: 'index.html',
+            templateUrl: './inicio.html',
             controller: 'inicioCtrl'
         })
         .when('/registrar',{
-        	templateUrl: 'registrar.html',
+        	templateUrl: './registrar.html',
         	controller: 'registrarCtrl'
         }).
         otherwise({
