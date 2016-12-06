@@ -5,18 +5,10 @@
 angular.module('app').
  controller('registrarCtrl',['$scope','$http','$location','registrarService', function($scope,$http,$location,registrarService){
 	 
-	 $scope.nome = {
-			 data : ""
-	 }
-	 $scope.sobrenome = {
-			 data: ""
-	 }
-	 $scope.email = {
-	         data: ""
-	 }
-	 $scope.senha = {
-			 data: ""
-	 }
+	 $scope.nome = "";
+	 $scope.sobrenome = "";
+	 $scope.email = "";
+	 $scope.senha = "";
 	 
 	 $scope.estadoCivil = [
       {
@@ -33,11 +25,11 @@ angular.module('app').
 	  },
 	];
 	 
-	 $scope.sexo = {
-	   opt : "M"
-	 }
+	 $scope.sexo = "M";
 	 
 	 $scope.civil = "S";
+	 
+	 $scope.estadoEscolhido = "";
 	 
 	 $scope.estados = {
 			 model: null,
@@ -179,21 +171,22 @@ angular.module('app').
 
 	 }
 	 	 
-	 var dataObj = {
-				nome : $scope.nome,
-				sobreNome: $scope.sobrenome,
-				email: $scope.email,
-				senha: $scope.senha,
-	            estadoCivil: $scope.estadoCivil,
-	            sexo: $scope.sexo,
-	            estado: $scope.estados
-		};
 	 
 	 //chamar o servico que enviara a votacao e retornar o status de ok caso
 	 // seja bem sucedido a persistencia no banco. 
 	 //após isso mudar o location e mostrar a tela com o percentual.
 	 $scope.registrarUsuario = function(){
 		  // $event.preventDefault();
+		 
+		 var dataObj = {
+					nome : $scope.nome,
+					sobreNome: $scope.sobrenome,
+					email: $scope.email,
+					senha: $scope.senha,
+		            estadoCivil: $scope.civil,
+		            sexo: $scope.sexo,
+		            estado: $scope.estadoEscolhido
+			};
 		   
 		   //chamar servico para persistir o voto para respectivo participante.
 		 registrarService.addUser(dataObj).
@@ -220,8 +213,10 @@ angular.module('app').service('registrarService',['$http',function($http){
 	function addUser(obj){
 		
 		var request = $http({
-			method: 'PUT',
-			url: '/registrarUsuario/'+obj			
+			url: '/registrarUsuario',
+			method: 'POST',
+			contentType: "application/json",
+			data: obj			
 		})
 		.success(function(response){
 			console.log('Sucesso ao registrar - servico angular.');
