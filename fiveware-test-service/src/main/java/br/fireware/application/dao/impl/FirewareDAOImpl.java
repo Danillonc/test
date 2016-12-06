@@ -9,6 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import br.fireware.application.dao.FirewareDAO;
 import br.fireware.model.FirewareModel;
 
+/**
+ * Classe responsável por representar a implementação do DAO.
+ * @author Danillo
+ *
+ */
 @Transactional
 @Repository
 public class FirewareDAOImpl implements FirewareDAO {
