@@ -7,6 +7,10 @@ angular.module('app').config(function ($routeProvider) {
         .when('/registrar',{
         	templateUrl: './registrar.html',
         	controller: 'registrarCtrl'
+        })
+        .when('/registroFinalizado',{
+        	templateUrl: './fimRegistro.html',
+        	controller: 'fimRegistroCtrl'
         }).
         otherwise({
         	redirecTo: '/'
