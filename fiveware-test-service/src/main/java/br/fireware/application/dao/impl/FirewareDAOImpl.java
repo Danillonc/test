@@ -14,23 +14,23 @@ import br.fireware.model.FirewareModel;
 public class FirewareDAOImpl implements FirewareDAO {
 
 	private final Logger LOGGER = Logger.getLogger(FirewareDAOImpl.class);
-	
+
 	@Autowired
 	private JdbcTemplate jdcTemplate;
 
 	@Override
 	public void saveUserDAO(FirewareModel model) {
-		
+
 		try {
 			StringBuilder sqlInsert = new StringBuilder();
-			sqlInsert.append("INSERT INTO Usuario(nome,sobrenome,estado_civil,sexo,estado) ");
-			sqlInsert.append("VALUES(?,?,?,?,?)");
+			sqlInsert.append("INSERT INTO Usuario(nome,sobrenome,email,senha,estado_civil,sexo,estado) ");
+			sqlInsert.append("VALUES(?,?,?,?,?,?,?)");
 			jdcTemplate.update(sqlInsert.toString(), new Object[] { model.getNome(), model.getSobreNome(),
-					model.getEstadoCivil(), model.getSexo(), model.getEstado() });
+					model.getEmail(), model.getSenha(), model.getEstadoCivil(), model.getSexo(), model.getEstado() });
 		} catch (Exception e) {
-			LOGGER.error("ERRO AO SALVAR OS DADOS - DAO "+e.getMessage());
+			LOGGER.error("ERRO AO SALVAR OS DADOS - DAO " + e.getMessage());
 		}
-		
+
 	}
 
 	public JdbcTemplate getJdcTemplate() {

@@ -32,6 +32,12 @@ public class FirewareModel implements Serializable{
 	 @Column(name = "sobrenome")
 	 private String sobreNome;
 	 
+	 @Column(name = "email")
+	 private String email;
+	 
+	 @Column(name = "senha")
+	 private String senha;
+	 
 	 @Column(name = "estado_civil")
 	 private String estadoCivil;
 	 
@@ -63,6 +69,22 @@ public class FirewareModel implements Serializable{
 
 	public void setSobreNome(String sobreNome) {
 		this.sobreNome = sobreNome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getEstadoCivil() {
