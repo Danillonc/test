@@ -30,7 +30,15 @@ O envio dos dados do formulário deve ser via AJAX
 
 ### COMANDOS PARA EXECUTAR A APLICAÇÃO ###
 1 - Aplicação foi desenvolvida com Spring Boot, AngularJS, MySQL
+
+
 2 - Importe a aplicação no eclipse e rode a classe Application.java como Java Application.
+
+
 3 - Após a inicialização do projeto somente acessar localhost:7001/ - se a porta já estiver em uso, mudar no (main/resosurces/application.properties) para outra porta.
+
+
 4 - Existe um script SQL que gera a tabela no MySQL, certificar-se de que o serviço do MySQL está iniciado caso contrário dará erro.
+
+
 5- Classes de Testes foram implementadas, a aplicação foi desenvolvida de forma pequena devido ao curto tempo mas conforme solicitado no desafio.
